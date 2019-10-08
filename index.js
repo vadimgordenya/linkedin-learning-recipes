@@ -1,2 +1,5 @@
-let a = 5;
-console.log(a);
+let log = (string) => {
+    console.log(string);
+}
+
+log("Hello world!");
