@@ -1,0 +1,12 @@
+{
+  "name": "recipes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vadimgordenya/linkedin-learning-recipes.git",
+  "author": "Vadzim",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node ./index.js"
+  }
+}
