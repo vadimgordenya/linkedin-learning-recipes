@@ -1,7 +1,7 @@
-let log = (string) => {
-    console.log(string);
-}
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-const b = 5;
+const MOUNT_ELEMENT = document.getElementById('root');
 
-log("Hello world!");
+ReactDOM.render(<App />, MOUNT_ELEMENT);
