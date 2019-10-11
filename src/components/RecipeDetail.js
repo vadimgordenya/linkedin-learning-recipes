@@ -1,12 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const RecipeDetail = (props) => {
-  if (!props.recipe) {
+  const { recipe, style, className } = props;
+
+  if (!recipe) {
     return (
       <p
-        style={props.style}
-        className={classNames('h3 p2 bg-white italic center', props.className)}
+        style={style}
+        className={classNames('h3 p2 bg-white italic center', className)}
       >
         Please select a recipe to see the detail.
       </p>
@@ -15,19 +18,23 @@ const RecipeDetail = (props) => {
 
   return (
     <div
-      style={props.style}
-      className={classNames('p2 bg-white', props.className)}
+      style={style}
+      className={classNames('p2 bg-white', className)}
     >
-      <h2 className="h2">{props.recipe.name}</h2>
-      <img className="fit" src={props.recipe.image} />
+      <h2 className="h2">{recipe.name}</h2>
+      <img
+        className="fit"
+        alt={recipe.name}
+        src={recipe.image}
+      />
       <div>
-        <span>{props.recipe.category}</span>
-        <span>{props.recipe.calories}</span>
+        <span>{recipe.category}</span>
+        <span>{recipe.calories}</span>
       </div>
       <h3>Ingredients</h3>
       <ul>
         {
-          props.recipe.ingredients.map((ingredient, index) => (
+          recipe.ingredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))
         }
@@ -35,13 +42,19 @@ const RecipeDetail = (props) => {
       <h3>Steps</h3>
       <ol>
         {
-          props.recipe.steps.map((step, index) => (
+          recipe.steps.map((step, index) => (
             <li key={index}>{step}</li>
           ))
         }
       </ol>
     </div>
   );
-}
+};
+
+RecipeDetail.propTypes = {
+  recipe: PropTypes.object,
+  className: PropTypes.string,
+  style: PropTypes.object,
+};
 
 export default RecipeDetail;

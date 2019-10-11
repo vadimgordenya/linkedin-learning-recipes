@@ -1,16 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RecipeList = (props) => {
+  const { style, recipes, onClick } = props;
+
   return (
-    <div style={props.style}>
+    <div style={style}>
       <h2 className="h2">Recipes</h2>
       <ul className="list-reset">
         {
-          props.recipes.map(recipe => (
+          recipes.map((recipe) => (
             <li
               key={recipe.id}
               className="py2 border-bottom border-bottom-dashed pointer"
-              onClick={() => props.onClick(recipe.id)}
+              onClick={() => onClick(recipe.id)}
             >
               <span>{recipe.name}</span>
               <span>{recipe.category}</span>
@@ -20,6 +23,12 @@ const RecipeList = (props) => {
       </ul>
     </div>
   );
-}
+};
+
+RecipeList.propTypes = {
+  recipes: PropTypes.object,
+  style: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default RecipeList;
