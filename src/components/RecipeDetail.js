@@ -1,32 +1,33 @@
 import React from 'react';
 
 const RecipeDetail = (props) => {
+  if (!props.recipe) {
+    return <p style={props.style}>Please select a recipe to see the detail.</p>
+  }
+
   return (
     <div style={props.style}>
-      <h2>Creepy Halloween Skull Cupcakes</h2>
-      <img src="" alt="" />
+      <h2>{props.recipe.name}</h2>
+      <img src={props.recipe.image} />
       <div>
-        <span>Deserts</span>
-        <span>1200</span>
+        <span>{props.recipe.category}</span>
+        <span>{props.recipe.calories}</span>
       </div>
       <h3>Ingredients</h3>
       <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
+        {
+          props.recipe.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))
+        }
       </ul>
       <h3>Steps</h3>
       <ol>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>d</li>
-        <li>e</li>
+        {
+          props.recipe.steps.map((step, index) => (
+            <li key={index}>{step}</li>
+          ))
+        }
       </ol>
     </div>
   );
