@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const RecipeDetail = (props) => {
+const RecipeDetail = props => {
   const { recipe, style, className } = props;
 
   if (!recipe) {
@@ -17,35 +17,24 @@ const RecipeDetail = (props) => {
   }
 
   return (
-    <div
-      style={style}
-      className={classNames('p2 bg-white', className)}
-    >
+    <div style={style} className={classNames('p2 bg-white', className)}>
       <h2 className="h2">{recipe.name}</h2>
-      <img
-        className="fit"
-        alt={recipe.name}
-        src={recipe.image}
-      />
+      <img className="fit" alt={recipe.name} src={recipe.image} />
       <div>
         <span>{recipe.category}</span>
         <span>{recipe.calories}</span>
       </div>
       <h3>Ingredients</h3>
       <ul>
-        {
-          recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))
-        }
+        {recipe.ingredients.map((ingredient, index) => (
+          <li key={index}>{ingredient}</li>
+        ))}
       </ul>
       <h3>Steps</h3>
       <ol>
-        {
-          recipe.steps.map((step, index) => (
-            <li key={index}>{step}</li>
-          ))
-        }
+        {recipe.steps.map((step, index) => (
+          <li key={index}>{step}</li>
+        ))}
       </ol>
     </div>
   );
