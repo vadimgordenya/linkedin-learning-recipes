@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import defaultImage from '../static/images/default.png';
 
 const RecipeDetail = ({ recipe, style, className }) => {
   if (!recipe) {
@@ -18,7 +19,14 @@ const RecipeDetail = ({ recipe, style, className }) => {
   return (
     <div style={style} className={classNames('p2 bg-white', className)}>
       <h2 className="h2">{recipe.name}</h2>
-      <img className="fit" alt={recipe.name} src={recipe.image} />
+      <img
+        className="fit"
+        alt={recipe.name}
+        src={recipe.image}
+        onError={e => {
+          e.target.src = defaultImage;
+        }}
+      />
       <div>
         <span>{recipe.category}</span>
         <span>{recipe.calories}</span>
