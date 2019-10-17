@@ -22,8 +22,8 @@ class Home extends React.Component {
 
   render() {
     const { currentRecipe } = this.state;
-    const { props } = this.state;
-    const { recipes, favorites } = props;
+    const { state } = this.props;
+    const { recipes, favorites } = state;
     const { toggleFavorite } = this.props;
 
     return (
@@ -51,6 +51,7 @@ class Home extends React.Component {
 
 Home.propTypes = {
   toggleFavorite: PropTypes.func,
+  state: PropTypes.object,
 };
 
 export default Home;
